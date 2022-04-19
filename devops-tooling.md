@@ -6,29 +6,32 @@
    -  ![Connecting to the EC2-instance](./images/Capture-ConnectEC2_mountvolumes_Step1.JPG)
   
 ### Create volumes, mount volumes, partion volumes
-    ```
-        sudo gdisk /dev/xvdf
-        sudo yum install lvm2
-        sudo lvmdiskscan
-        sudo pvcreate /dev/xvdb1
-        sudo pvcreate /dev/xvdc1
-        sudo pvcreate /dev/xvdb1
-        sudo vgcreate webdata-vg /dev/xvdh1 /dev/xvdg1 /dev/xvdf1
-        sudo lvcreate -n lv-logs -L 9G nfs-vg
-        sudo lvcreate -n lv-apps -L 8G nfs-vg
-        sudo lvcreate -n lv-opt  -L 9G nfs-vg
-        sudo vgdisplay -v #view complete setup - VG, PV, and LV
-        sudo lsblk 
-        sudo mkfs -t xfs /dev/nfs-vg/apps-lv
-        sudo mkfs -t xfs /dev/nfs-vg/logs-lv
-    ```
 
+    ```
+    sudo gdisk /dev/xvdf
+    sudo yum install lvm2
+    sudo lvmdiskscan
+    sudo pvcreate /dev/xvdb1
+    sudo pvcreate /dev/xvdc1
+    sudo pvcreate /dev/xvdb1
+    sudo vgcreate webdata-vg /dev/xvdh1 /dev/xvdg1 /dev/xvdf1
+    sudo lvcreate -n lv-logs -L 9G nfs-vg
+    sudo lvcreate -n lv-apps -L 8G nfs-vg
+    sudo lvcreate -n lv-opt  -L 9G nfs-vg
+    sudo vgdisplay -v #view complete setup - VG, PV, and LV
+    sudo lsblk 
+    sudo mkfs -t xfs /dev/nfs-vg/apps-lv
+    sudo mkfs -t xfs /dev/nfs-vg/logs-lv
+    sudo mkfs -t xfs /dev/nfs-vg/opt-lv
+    ```
+### Mounting Directories 
     ```
     sudo mount /dev/nfs-vg/lv-logs /mnt/logs
     sudo mount /dev/nfs-vg/lv-apps /mnt/apps
     sudo mount /dev/nfs-vg/lv-opt /mnt/opt
     sudo nano /etc/fstab 
     ```
+### Installing NFS Server 
 
     ```
     sudo yum -y update
