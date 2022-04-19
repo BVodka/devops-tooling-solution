@@ -97,9 +97,10 @@
 	sudo mysql -u admin -p -h <DB-Server-Private-IP-address>
 	```
    - ![SetUp the Tooling the Database](./images/Capture_SetupDBClient_ToolingDB.JPG)
-   - ![SetUp the Tooling the Database](./images/Capture_Property_Tooling.JPG)
+   
 
 ### Connecting to the Webclient 
    - ![Logining in to Webservers](./images/Capture_logindetailsStep17.JPG)
    - ![NFS Configured and working with Webservers](./images/Capture_StartHTTPDWebserverStep18.JPG)
-   - ![Apache Server](./images/Capture_logintoHomepage_Final.JPG)
+   - ![Webservers ](./images/Capture_Property_Tooling.JPG)
+   - ![Logged into Server](./images/Capture_logintoHomepage_Final.JPG)
